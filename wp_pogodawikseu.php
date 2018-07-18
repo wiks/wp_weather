@@ -224,7 +224,7 @@ class PogodaWiksEu_Widget extends WP_Widget {
         $vcontent = $g->get_and_validate_for_token($instance['token']);
         if($vcontent) {
             if(!empty($vcontent['name']) && !empty($vcontent['f'])) {
-                $my_html_content = '<h3>'.$vcontent['name'].'</h3>';
+                $my_html_content = '<a href="http://pogoda.wiks.eu">'.'<h3>'.$vcontent['name'].'</h3>'.'</a>';
                 $lp_days = '0';
                 foreach($vcontent['f'] as $key=>$value) {
                     if($lp_days++ < $instance['max_days']) {
