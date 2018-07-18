@@ -164,6 +164,9 @@ class PogodaWiksEu_Widget extends WP_Widget {
 	$widget_name = __('Pogoda.Wiks.Eu', 'PogodaWiksEu_Widget');
 	$widget_opt = array('description'=>'Ten widget wyświetla pogodę i/lub prognozę pogody.');
 
+        $this->url_img = plugins_url( 'img/', __FILE__ );
+        $this->dir_img = plugin_dir_path(__FILE__).'img/';
+
 	parent::__construct($widget_id, $widget_name, $widget_opt);        
     }
        
@@ -233,7 +236,8 @@ class PogodaWiksEu_Widget extends WP_Widget {
                             $inside_key = $this->prittyfy_dt($key);
                         }
                         if($instance['allow_audio'] === true && !empty($value['url'])){
-                            $my_html_content .= '<a href="'.$value['url'].'">'.$inside_key.'</a>';
+                            $img = '<img src="'.$this->url_img.'speaker50.gif'.'" style="width:20px;height:20px;">';
+                            $my_html_content .= '<a href="'.$value['url'].'">'.$img.' '.$inside_key.'</a>';
                         }else{
                             $my_html_content .= $inside_key;
                         }
